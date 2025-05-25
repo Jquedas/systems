@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ficha 3 - 5415</title>
+  <script src="src/js/jquery.js"></script>
+  <script src="src/js/datatable.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="src/js/ufcd.js"></script>
+  <script src="src/js/aluno.js"></script>
+  <script src="src/js/function.js"></script>
+  <script src="src/js/sweetalert.js"></script>
+  <script src="src/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="src/css/bootstrap.css">
+  <link rel="stylesheet" href="src/css/sweetalert.css">
+  <link rel="stylesheet" href="src/css/animate.css">
+  <link rel="stylesheet" href="src/css/datatable.css">
+
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+</head>
+
+
+
+<body>
+  <a href="aluno.html">aluno</a>
+  <div class="container mt-5">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button"
+          role="tab" aria-controls="home-tab-pane" aria-selected="true">UFCD</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button"
+          role="tab" aria-controls="profile-tab-pane" aria-selected="false">Aluno</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button"
+          role="tab" aria-controls="contact-tab-pane" aria-selected="false">Matricula</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane"
+          type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false">Listagem</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="edit-tab" data-bs-toggle="tab" data-bs-target="#edit-tab-pane" type="button"
+          role="tab" aria-controls="disabled-tab-pane" aria-selected="false">Edição</button>
+      </li>
+
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="graph-tab" data-bs-toggle="tab" data-bs-target="#graph-tab-pane" type="button"
+          role="tab" aria-controls="disabled-tab-pane" aria-selected="false">Gráfico</button>
+      </li>
+
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="map-tab" data-bs-toggle="tab" data-bs-target="#map-tab-pane" type="button"
+          role="tab" aria-controls="disabled-tab-pane" aria-selected="false">Mapa</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+
+
+        <form class="row g-3">
+          <div class="col-md-6">
+            <label for="descricaoUFCD" class="form-label">Descrição</label>
+            <input type="text" class="form-control" id="descricaoUFCD">
+          </div>
+          <div class="col-md-3">
+            <label for="codUFCD" class="form-label">Código</label>
+            <input type="text" class="form-control" id="codUFCD">
+          </div>
+
+          <div class="col-3 mt-5">
+            <button type="button" class="btn btn-primary btn-sm" onclick="registaUFCD()">Registar</button>
+          </div>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+        <form class="row g-3">
+          <div class="col-md-6">
+            <label for="nomeAluno" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nomeAluno">
+          </div>
+          <div class="col-md-6">
+            <label for="moradaAluno" class="form-label">Morada</label>
+            <input type="text" class="form-control" id="moradaAluno">
+          </div>
+          <div class="col-3">
+            <label for="ccAluno" class="form-label">Cartão de Cidadão</label>
+            <input type="text" class="form-control" id="ccAluno">
+          </div>
+          <div class="col-3">
+            <label for="escolaridadeAluno" class="form-label">Escolaridade</label>
+            <input type="text" class="form-control" id="escolaridadeAluno">
+          </div>
+          <div class="col-md-3">
+            <label for="nacionalidadeAluno" class="form-label">Nacionalidade</label>
+            <input type="text" class="form-control" id="nacionalidadeAluno">
+          </div>
+
+          <div class="col-md-3">
+            <label for="telefoneAluno" class="form-label">Telefone</label>
+            <input type="tel" class="form-control" id="telefoneAluno">
+          </div>
+          <div class="col-md-6">
+            <label for="emailAluno" class="form-label">Email</label>
+            <input type="email" class="form-control" id="emailAluno">
+          </div>
+          <div class="col-12">
+            <button type="button" class="btn btn-primary" onclick="registaAluno()">Registar</button>
+          </div>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+        <div class="row">
+          <div class="col-md-12">
+            <select class="form-select js-example-basic-single" id="listaAlunos" aria-label="Default select example">
+              <option value="-1">Sem Alunos Registados</option>
+            </select>
+          </div>
+          <div class="col-md-10 mt-3">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Descrição</th>
+                  <th scope="col">Código</th>
+                  <th scope="col">Inscrever</th>
+                </tr>
+              </thead>
+              <tbody id="listaUfcds">
+
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-2 mt-3">
+            <button type="button" class="btn btn-primary" onclick="registaMatricula()">Registar</button>
+
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">
+        <div class="row">
+          <div class="col-md-10 mt-3">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Telefone</th>
+                  <th scope="col">Info</th>
+                </tr>
+              </thead>
+              <tbody id="listaAlunosInfo">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="edit-tab-pane" role="tabpanel" aria-labelledby="edit-tab" tabindex="0">
+
+
+        <form class="row g-3 mt-3">
+
+          <div class="col-md-12">
+            <select class="form-select js-example-basic-single" id="listaAlunos1" aria-label="Default select example"
+              onchange="getInfoAluno(this.value)">
+              <option value="-1">Sem Alunos Registados</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="nomeAlunoEdit" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nomeAlunoEdit">
+          </div>
+          <div class="col-md-6">
+            <label for="moradaAlunoEdit" class="form-label">Morada</label>
+            <input type="text" class="form-control" id="moradaAlunoEdit">
+          </div>
+          <div class="col-3">
+            <label for="ccAlunoEdit" class="form-label">Cartão de Cidadão</label>
+            <input type="text" class="form-control" id="ccAlunoEdit">
+          </div>
+          <div class="col-3">
+            <label for="escolaridadeAlunoEdit" class="form-label">Escolaridade</label>
+            <input type="text" class="form-control" id="escolaridadeAlunoEdit">
+          </div>
+          <div class="col-md-3">
+            <label for="nacionalidadeAlunoEdit" class="form-label">Nacionalidade</label>
+            <input type="text" class="form-control" id="nacionalidadeAlunoEdit">
+          </div>
+
+          <div class="col-md-3">
+            <label for="telefoneAlunoEdit" class="form-label">Telefone</label>
+            <input type="tel" class="form-control" id="telefoneAlunoEdit">
+          </div>
+          <div class="col-md-6">
+            <label for="emailAlunoEdit" class="form-label">Email</label>
+            <input type="email" class="form-control" id="emailAlunoEdit">
+          </div>
+          <div class="col-12">
+            <button type="button" class="btn btn-primary" id="btnEdit">Registar</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="tab-pane fade" id="graph-tab-pane" role="tabpanel" aria-labelledby="graph-tab" tabindex="0">
+
+        <form class="row g-3 mt-3">
+
+
+
+
+          <div class="col-md-6">
+            <label for="alunoGraph" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="alunoGraph">
+          </div>
+          <div class="col-md-2">
+            <label for="aprovadasGraph" class="form-label">Aprovadas</label>
+            <input type="text" class="form-control" id="aprovadasGraph">
+          </div>
+          <div class="col-2">
+            <label for="reprovadasGraph" class="form-label">Reprovadas</label>
+            <input type="text" class="form-control" id="reprovadasGraph">
+          </div>
+          <div class="col-2">
+            <label for="porConcluirGraph" class="form-label">Por Concluir</label>
+            <input type="text" class="form-control" id="porConcluirGraph">
+          </div>
+
+          <div class="col-12">
+            <button type="button" class="btn btn-primary" onclick="registarAlunosGraph()">Registar</button>
+          </div>
+        </form>
+
+
+        <div class="container">
+
+          <div class="col-md-12 mt-5">
+            <select class="form-select js-example-basic-single" id="listaAlunosGraph"
+              aria-label="Default select example" onchange="getDados(this.value)">
+              <option value="-1">Sem Alunos Registados</option>
+            </select>
+          </div>
+
+          <div style="width: 50%;">
+            <canvas id="myChart"></canvas>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="tab-pane fade" id="map-tab-pane" role="tabpanel" aria-labelledby="graph-tab" tabindex="0">
+ <div id="map"></div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #map { height: 380px; width: 580px; }
+  </style>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="infoAlunoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="infoAlunoModalNome">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <select id="opt">
+            <option value="0">teste</option>
+          </select>
+          <div class="col-md-10 mt-3">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Descrição</th>
+                  <th scope="col">Código</th>
+                </tr>
+              </thead>
+              <tbody id="listaUfcdsInscrito">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="btnGuardaEditMatricula">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+
+
+  </script>
+
+  <script src="src/js/sessao.js"></script>
+
+</body>
+
+</html>

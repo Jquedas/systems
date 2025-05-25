@@ -1,0 +1,12 @@
+.carousel-wrapper {
+    width: 80%;
+    margin: auto;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    margin-top: 60px;
+}

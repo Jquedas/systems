@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabelas</title>
+    <script src="js/jquery.js"></script>
+    <script src="js/cinema.js"></script>
+    <script src="js/filme.js"></script>
+    <script src="js/code.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/sweetalert.js"></script>
+    <script src="js/datatable.js"></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/sweetalert.css" />
+    <link rel="stylesheet" href="css/datatable.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Cinema</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tabelas.html">Tabelas</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Registos
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="cinema.html">Cinema</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="filme.html">Filme</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="sessao.html">Sessão</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="edit.html">Edição</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container col-md-5 col-lg-10 mt-5 p-4 shadow rounded bg-light">
+      <h3>Tabela Cinemas</h3>
+      <table class="table" id="cinemasTabela">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Cinema</th>
+            <th scope="col">Morada</th>
+            <th scope="col">Localidade</th>
+            <th scope="col">Edit</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="container col-md-5 col-lg-10 mt-5 p-4 shadow rounded bg-light">
+      <h3>Tabela Sessões</h3>
+      <table class="table">
+        <label for="cinemaSelect2" class="form-label">Cinemas</label>
+        <select
+          id="cinemaSelect2"
+          class="form-control"
+          onchange="feedSessao(this.value)"
+        >
+          <option value="-1">Sem Cinemas</option>
+        </select>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Local</th>
+            <th scope="col">Filme</th>
+            <th scope="col">Info</th>
+          </tr>
+        </thead>
+        <tbody id="tabelaSessoes"></tbody>
+      </table>
+    </div>
+
+    <div
+      class="modal fade"
+      id="infoSessaoModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="infoSessaoNome">
+              Informação Sessão
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <select id="opt">
+              <option value="0">teste</option>
+            </select>
+            <div class="col-md-10 mt-3">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Morada</th>
+                  </tr>
+                </thead>
+                <tbody id="listaSessoes"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Fechar
+            </button>
+            <button type="button" class="btn btn-primary" id="guardaCinema">
+              Guardar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
