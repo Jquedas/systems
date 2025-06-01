@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ordens de Reparação</title>
+  
+  <script src="./js/biblio/jquery.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="./js/class/cliente.js"></script>
+  <script src="./js/class/ordem.js"></script>
+  <script src="./js/class/material.js"></script>
+  <script src="./js/biblio/bootstrap.js"></script>
+  <script src="./js/biblio/sweetalert.js"></script>
+  <script src="./js/biblio/datatable.js"></script>
+  <script src="./js/js.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/biblio/bootstrap.css">
+  <link rel="stylesheet" href="css/biblio/sweetalert.css">
+  <link rel="stylesheet" href="css/biblio/datatable.css">
+  <link rel="stylesheet" href="css/biblio/animate.css">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+  <!-- NAV -->
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <img src="/img/homepage/logo.png" alt="logo" width="250" >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="index.html">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="snos.html">Sobre Nós</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="ordem.html">Ordens de Reparação</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="materiais.html">Materiais</a>
+        </li>
+       
+      
+        
+        <li class="nav-item">
+          <a class="nav-link" href="cliente.html">Cliente</a>
+        </li>
+      
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-2">
+  <div class="row justify-content-center">
+
+    <!-- Formulário Reparação -->
+    <div class="col-12 col-md-6 col-lg-5 mt-5 p-4 shadow rounded">
+      <h3>Registar Ordem de Reparação</h3>
+      <p class="text-muted">Preencha os campos abaixo:</p>
+
+      <div class="mb-2">
+        <label for="dtOrdem" class="form-label">Data</label>
+        <input type="date" class="form-control" id="dtOrdem">
+      </div>
+
+      <div class="mb-2">
+        <label for="equipamentoOrdem" class="form-label">Equipamento</label>
+        <input type="text" class="form-control" id="equipamentoOrdem">
+      </div>
+
+      <div class="mb-2">
+        <label for="nOrdem" class="form-label">Referência Ordem</label>
+        <input type="number" class="form-control" id="nOrdem">
+      </div>
+
+      <div class="mb-2">
+        <label for="clienteSelect" class="form-label">Cliente</label>
+        <select class="form-select" id="clienteSelect">
+          <option value="-1">Sem Clientes</option>
+        </select>
+      </div>
+
+      <div class="mb-2">
+        <label for="funcOrdem" class="form-label">Funcionário</label>
+        <input type="text" class="form-control" id="funcOrdem">
+      </div>
+
+      <div class="col-12 mt-3">
+        <button type="button" class="btn btn-success w-100" onclick="addOrdem()">Registar Cliente</button>
+      </div>
+    </div>
+
+    <!-- Formulário Adicionar materiais a ordem de reparação -->
+    <div class="col-12 col-md-6 col-lg-5 mt-5 p-4 shadow rounded">
+
+      <h3>Adicionar Material a Ordem de Reparação</h3>
+      <p class="text-muted">Preencha os campos abaixo:</p>
+
+      <div class="mb-2">
+        <label for="ordemSelect" class="form-label">Ordem</label>
+        <select class="form-select" id="ordemSelect">
+          <option value="-1">Sem Dados</option>
+        </select>
+      </div>
+
+      <div class="mb-2">
+        <label for="materialSelect" class="form-label">Material</label>
+        <select class="form-select" id="materialSelect" multiple>
+          <option value="-1">Sem Dados</option>
+        </select>
+      </div>
+
+      <div class="col-12 mt-3">
+        <button type="button" class="btn btn-success w-100" onclick="addMaterialOrdem()">Registar Cliente</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Tabela Ordens -->
+
+<div class="mt-2">
+  <div class="container col-md-10 col-lg-8 mt-5 p-4 shadow rounded" style="min-height: 500px;">
+
+    <table class="table border mt-5 " id="tableOrdem">
+    <thead class="table-black">
+      <tr>
+        <th scope="col">Nº Ordem</th>
+        <th scope="col">Equipamento</th>
+        <th scope="col">Data</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Informação</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div>
+    <button type="button" class="form-control btn btn-success" onclick="feedTable()">Mostrar Tabela</button>
+  </div>
+
+</div>
+
+<!-- Modal -->
+
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h5 class="modal-title" id="infoModalLabel">Informações da Ordem</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      
+      </div>
+      <div class="modal-body">
+        <p><strong>Cliente:</strong> <span id="modalCliente"></span></p>
+        
+        <p><strong>Funcionário:</strong> <span id="modalFuncionario"></span></p>
+        
+        <p><strong>Equipamento:</strong> <span id="modalEquipamento"></span></p>
+        
+        <p><strong>Data:</strong> <span id="modalData"></span></p>
+        
+        <p><strong>Nº Ordem:</strong> <span id="modalNOrdem"></span></p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Edição de Ordem -->
+
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content shadow rounded">
+      <div class="modal-header">
+
+        <input type="hidden" id="indexOrdemEdit" />
+
+        <h5 class="modal-title" id="editModalLabel">Editar Ordem de Reparação</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="editIndex">
+
+        <div class="mb-2">
+          <label for="editData" class="form-label">Data</label>
+          <input type="date" class="form-control" id="editData">
+        </div>
+
+        <div class="mb-2">
+          <label for="editEquipamento" class="form-label">Equipamento</label>
+          <input type="text" class="form-control" id="editEquipamento">
+        </div>
+
+        <div class="mb-2">
+          <label for="editNOrdem" class="form-label">Nº Ordem</label>
+          <input type="number" class="form-control" id="editNOrdem">
+        </div>
+
+        <div class="mb-2">
+          <label for="editCliente" class="form-label">Cliente</label>
+          <select class="form-select" id="editCliente">
+            <option value="-1">Sem Clientes</option>
+          </select>
+        </div>
+
+        <div class="mb-2">
+          <label for="editFuncionario" class="form-label">Funcionário</label>
+          <input type="text" class="form-control" id="editFuncionario">
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button class="btn btn-primary" onclick="salvaEdicao()">Guardar Alterações</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+  
+</body>
+</html>

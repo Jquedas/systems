@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nós</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/biblio/bootstrap.css">
+  <link rel="stylesheet" href="css/biblio/sweetalert.css">
+  <link rel="stylesheet" href="css/biblio/animate.css">
+  <link rel="stylesheet" href="css/biblio/datatable.css">
+
+</head>
+<body>
+
+   <!-- NAV -->
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <img src="/img/homepage/logo.png" alt="logo" width="250" >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="index.html">Home</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link active" href="snos.html">Sobre Nós</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="ordem.html">Ordens de Reparação</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="materiais.html">Materiais</a>
+        </li>
+       
+      
+        
+        <li class="nav-item">
+          <a class="nav-link" href="cliente.html">Cliente</a>
+        </li>
+      
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- IMG/FORM -->
+
+<div class="container mt-4">
+  <div class="row align-items-start">
+
+    <!-- CARD -->
+
+    <div class="col-md-3">
+      <div class="card h-100">
+        <img src="img/sobrenos/dados.png" class="card-img-top" alt="..." />
+      </div>
+    </div>
+
+    <!-- FORMULÁRIO -->
+
+    <div class="col-md-8">
+      <form class="w-100">
+        <div class="row g-1">
+          <h5 style="text-align: center;">Formulário de Contacto</h5>
+          
+          <div class="col-md-3">
+            <label for="nome" class="form-label">Email</label>
+            <input type="text" class="form-control" id="nome"/>
+          </div>
+
+          <div class="col-md-3">
+            <label for="email" class="form-label">Nome</label>
+            <input type="text"  class="form-control" id="email" />
+          </div>
+
+          <div class="col-md-3">
+            <label for="codigo" class="form-label">Idade</label>
+            <input type="number" class="form-control" id="codigo" />
+          </div>
+
+          <div class="col-md-3">
+            <label for="motivo" class="form-label">Assunto</label>
+            <select id="motivo" class="form-select">
+              <option value="-1">Opções</option>
+            </select>
+          </div>
+
+           <div class="col-md-12" style="text-align: center;">
+            <label for="codigo" class="form-label">Mensagem</label>
+            <textarea name="" id="" class="form-control"></textarea>
+          </div>
+
+    
+
+          <div class="col-12" style="text-align: center;">
+            <button type="submit" class="btn btn-primary mt-2">Enviar</button>
+          </div>
+
+          <div class="col-12" style="margin-left: 0%;margin-top: 6%;margin-bottom: 15%;">
+            <img src="/img/sobrenos/img2.png" alt="logo5" style="width: 900px; height: auto;">
+          </div>
+
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+
+<div class="card mb-3" style="margin-top: 1%; background-color: blue;">
+  <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-3">
+    <!-- Imagem à esquerda -->
+    <img src="img/homepage/logo.png" class="img-fluid" alt="..." style="width: 250px; height: auto;">
+
+    <!-- Texto no centro -->
+    <div class="text-center flex-grow-1">
+      <p class="card-text mb-0">
+        <small class="text-body-secondary">
+          Avaliação 5414 | 5415 | 5416 - Realizado por: João Quedas | 2025
+        </small>
+      </p>
+    </div>
+
+    <!-- Input à direita -->
+    <div style="min-width: 250px;">
+      <label for="newsletterEmail" class="form-label mb-1">Email para receber a nossa newsletter</label>
+      <input type="text" class="form-control" id="newsletterEmail">
+    </div>
+  </div>
+</div>
+
+
+  
+</body>
+</html>
