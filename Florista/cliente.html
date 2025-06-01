@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registe Cliente</title>
+
+  <script src="/js/jquery.js"></script>
+  <script src="/js/class/pessoa.js"></script>
+  <script src="/js/class/cliente.js"></script>
+  <script src="./js/class/flor.js"></script>
+  <script src="/js/code.js"></script>
+  <script src="/js/bootstrap.js"></script>
+  <script src="/js/sweetalert.js"></script>
+  <script src="/js/datatable.js"></script>
+
+  <link rel="stylesheet" href="css/bilbio/style.css">
+  <link rel="stylesheet" href="css/bilbio/bootstrap.css">
+  <link rel="stylesheet" href="css/bilbio/sweetalert.css">
+  <link rel="stylesheet" href="css/bilbio/animate.css">
+  <link rel="stylesheet" href="css/bilbio/datatable.css">
+
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <img src="/img/floweris.png" alt="logo" width="120" height="30" class="d-inline-block align-text-top me-2" >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="snos.html">Sobre Nós</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Registo
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="cliente.html">Cliente</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="flores.html">Flores</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="funcionario.html">Funcionário</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="encomendas.html">Encomendas</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<!-- Formulário Registo -->
+
+<div class="mt-2">
+  <div class="container col-md-6 col-lg-4 mt-5 p-4 shadow rounded bg-light">
+    <h3 class="text-center mb-4">Fomulário Registo Cliente</h3>
+    <p class="text-muted">Preencha os campos abaixo:</p>
+    
+    <div class="mb-2">
+      <label for="nomeCliente"class="form-label">Nome</label>
+      <input type="text" class="form-control" id="nomeCliente">
+    </div>
+
+    <div class="mb-2">
+      <label for="moradaCliente"class="form-label">Morada</label>
+      <input type="text" class="form-control" id="moradaCliente">
+    </div>
+
+    <div class="mb-2">
+      <label for="emailCliente"class="form-label">Email</label>
+      <input type="email" class="form-control" id="emailCliente">
+    </div>
+
+    <div class="mb-2">
+      <label for="telefoneCliente"class="form-label">Telefone</label>
+      <input type="number" class="form-control" id="telefoneCliente">
+    </div>
+
+    <div class="mb-2">
+      <label for="nascimentoCliente"class="form-label">Data de Nascimento</label>
+      <input type="date" class="form-control" id="nascimentoCliente">
+    </div>
+
+    <div class="mb-2">
+      <label for="nifCliente"class="form-label">NIF</label>
+      <input type="number" class="form-control" id="nifCliente">
+    </div>
+
+    <div class="mb-2">
+      <label for="empresaClienteSelect"class="form-label">Tipo de Empresa</label>
+      <select class="form-select"  id="empresaClienteSelect">
+        <option value="-1">Escolha uma opção</option>
+        <option value="Empresa">Empresa</option>
+        <option value="Privado">Privado</option>
+      </select>
+    </div>
+
+    <!-- Buttons -->
+
+    <div class="col-md-5">
+      <label for="nCliente"class="form-label">Número de cliente</label>
+      
+      <div class="input-group">
+        <input type="number" class="form-control" id="nCliente" readonly>
+      <button type="button" class=" btn btn-primary" onclick="gerarcod()">Gerar</button>
+      </div>
+
+    </div>
+
+    <div class="col-12" style="margin-top: 2%;">
+      <button type="button" class="btn btn-primary" onclick="addCliente()">Registar</button>
+    </div>
+  
+  </div>
+</div>
+
+<!-- Tabela Cliente -->
+
+<table class="table table-bordered mt-5" id="tableCliente">
+    <thead class="table-black">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">NIF</th>
+        <th scope="col">Informação</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+
+<!-- Modal de edição do cliente -->
+
+
+<div class="modal fade" id="editarClienteModal" tabindex="-1" aria-labelledby="editarClienteModalLabel" aria-hidden="true">
+ 
+  <div class="modal-dialog modal-dialog-centered">
+    
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        
+        <input type="hidden" id="indexClienteEdit" />
+
+        <h5 class="modal-title" id="editarClienteModalLabel">Editar Cliente</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="formEditarCliente">
+
+          <div class="mb-3">
+            <label for="numCliente" class="form-label">Número do Cliente</label>
+            <input type="text" class="form-control" id="numCliente" readonly>
+          </div>
+
+          <div class="mb-3">
+            <label for="nomeClienteEdit" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nomeClienteEdit" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="moradaClienteEdit" class="form-label">Morada</label>
+            <input type="text" class="form-control" id="moradaClienteEdit" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="emailClienteEdit" class="form-label">Email</label>
+            <input type="email" class="form-control" id="emailClienteEdit" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="telefoneClienteEdit" class="form-label">Telefone</label>
+            <input type="tel" class="form-control" id="telefoneClienteEdit" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="nascimentoClienteEdit" class="form-label">Data de Nascimento</label>
+            <input type="date" class="form-control" id="nascimentoClienteEdit" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="nifClienteEdit" class="form-label">NIF</label>
+            <input type="text" class="form-control" id="nifClienteEdit" required>
+          </div>
+
+          <div class="mb-3">
+
+            <label for="empresaClienteEdit" class="form-label">Empresa</label>
+
+            <select class="form-select" id="empresaClienteEdit" required>
+              <option value="">Selecione uma opção</option>
+              <option value="Empresa">Empresa</option>
+              <option value="Particular">Particular</option>             
+            </select>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" onclick="salvaEdicao()">Salvar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+</body>
+</html>

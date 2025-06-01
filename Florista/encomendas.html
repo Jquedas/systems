@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registar Encomendas</title>
+
+  <script src="./js/jquery.js"></script>
+  <script src="./js/class/pessoa.js"></script>
+  <script src="./js/class/cliente.js"></script>
+  <script src="./js/class/flor.js"></script>
+  <script src="./js/class/funcionario.js"></script>
+  <script src="./js/code.js"></script>
+  <script src="./js/bootstrap.js"></script>
+  <script src="./js/sweetalert.js"></script>
+  <script src="./js/datatable.js"></script>
+
+  <link rel="stylesheet" href="css/bilbio/style2.css">
+  <link rel="stylesheet" href="css/bilbio/bootstrap.css">
+  <link rel="stylesheet" href="css/bilbio/sweetalert.css">
+  <link rel="stylesheet" href="css/bilbio/animate.css">
+  <link rel="stylesheet" href="css/bilbio/datatable.css"> 
+ 
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <img src="/img/floweris.png" alt="logo" width="120" height="30" class="d-inline-block align-text-top me-2" >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="snos.html">Sobre Nós</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Registo
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="cliente.html">Cliente</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="flores.html">Flores</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="funcionario.html">Funcionário</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="encomendas.html">Encomendas</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+ <div class="container col-md-10 col-lg-8 mt-5 p-4 shadow rounded bg-light">
+  <h4 style="text-align: center;">Faça AQUI a sua Encomenda!</h4><br>
+
+  <div class="col-md-4">
+    <label for="cliente" class="form-label">Cliente</label>
+  <select id="clienteSelect" class="form-select mb-4 col-md-6">
+    <option value="-1">Sem Clientes</option>
+  </select>
+  </div>
+
+  <!-- Formulário Encomenda -->
+
+<div class="container mt-4">
+  <h3 class=" mb-4">Formulário Encomenda</h3>
+  <p class="text-muted">Preencha os campos abaixo:</p>
+
+  <form>
+    <div class="row justify-content-center">
+
+      <!-- Flor -->
+      <div class="col-md-6 mb-3 d-flex align-items-center">
+        <label for="florSelect" class="me-3 mb-0" style="width: 120px;">Flor</label>
+        <select id="florSelect" class="form-select">
+          <option value="-1">Sem Flores</option>
+        </select>
+      </div>
+
+      <!-- Descrição -->
+      <div class="col-md-6 mb-3 d-flex align-items-center">
+        <label for="descFlores" class="me-3 mb-0" style="width: 120px;">Descrição</label>
+        <input type="text" class="form-control" id="descFlores">
+      </div>
+
+      <!-- Arranjos -->
+      <div class="col-md-6 mb-3 d-flex align-items-center">
+        <label for="arranjoFlor" class="me-3 mb-0" style="width: 120px;">Arranjos</label>
+        <select id="arranjoFlor" class="form-select">
+          <option value="Ramos">Ramos</option>
+          <option value="Bouquet">Bouquet</option>
+          <option value="Individual">Individual</option>
+        </select>
+      </div>
+
+      <!-- Quantidade -->
+      <div class="col-md-6 mb-3 d-flex align-items-center">
+        <label for="qntFlor" class="me-3 mb-0" style="width: 120px;">Quantidade</label>
+        <input type="number" class="form-control" id="qntFlor">
+      </div>
+
+      <!-- Referência -->
+      <div class="col-md-6 mb-3 d-flex align-items-center">
+        <label for="refFlor" class="me-3 mb-0" style="width: 120px;">Referência</label>
+        <input type="text" class="form-control" id="refFlor">
+      </div>
+
+      <!-- Hora Atual -->
+      <div class="col-md-6 mb-3 d-flex align-items-center">
+        <label for="horaSelect" class="me-3 mb-0" style="width: 120px;">Data Atual</label>
+        <input type="text" class="form-control me-2" id="horaSelect" readonly>
+        <button type="button" class="btn btn-primary" onclick="actualTime()">Horas</button>
+      </div>
+    </div>
+
+    <!-- Botão Registar -->
+    <div class="text-center mt-4">
+      <button type="button" class="btn btn-success px-4" onclick="addEncomenda()">Registar</button>
+    </div>
+  </form>
+
+  <!-- Tabela -->
+  <table class="table table-bordered mt-5" id="tableFlores">
+    <thead class="table-black">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Referência Encomenda</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Informação</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+ <!-- Modal -->
+
+<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered"> 
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="infoEncomendaNome">Detalhes da Encomenda</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+
+      <div class="modal-body">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Flor</th>
+              <th>Arranjo</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody id="infoEncomendaBody">
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+</body>
+</html>

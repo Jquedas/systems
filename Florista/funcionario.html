@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registo Funcionário</title>
+
+  <script src="/js/jquery.js"></script>
+  <script src="/js/class/pessoa.js"></script>
+  <script src="/js/class/cliente.js"></script>
+  <script src="/js/class/flor.js"></script>
+  <script src="/js/class/funcionario.js"></script>
+  <script src="/js/code.js"></script>
+  <script src="/js/bootstrap.js"></script>
+  <script src="/js/sweetalert.js"></script>
+  <script src="/js/datatable.js"></script>
+
+  <link rel="stylesheet" href="css/bilbio/style.css">
+  <link rel="stylesheet" href="css/bilbio/bootstrap.css">
+  <link rel="stylesheet" href="css/bilbio/sweetalert.css">
+  <link rel="stylesheet" href="css/bilbio/animate.css">
+  <link rel="stylesheet" href="css/bilbio/datatable.css">
+
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <img src="/img/floweris.png" alt="logo" width="120" height="30" class="d-inline-block align-text-top me-2" >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="snos.html">Sobre Nós</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Registo
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="cliente.html">Cliente</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="flores.html">Flores</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="funcionario.html">Funcionário</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="encomendas.html">Encomendas</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="mt-2">
+  <div class="container col-md-6 col-lg-4 mt-5 p-4 shadow rounded bg-light">
+    <h3 class="text-center mb-4">Fomulário Registo Funcionário</h3>
+    <p class="text-muted">Preencha os campos abaixo:</p>
+    
+    <div class="mb-2">
+      <label for="nomeFunc"class="form-label">Nome</label>
+      <input type="text" class="form-control" id="nomeFunc">
+    </div>
+
+    <div class="mb-2">
+      <label for="moradaFunc"class="form-label">Morada</label>
+      <input type="text" class="form-control" id="moradaFunc">
+    </div>
+
+    <div class="mb-2">
+      <label for="emailFunc"class="form-label">Email</label>
+      <input type="email" class="form-control" id="emailFunc">
+    </div>
+
+    <div class="mb-2">
+      <label for="nFunc"class="form-label">Número de funcionário</label>
+      <input type="number" class="form-control" id="nFunc">
+    </div>
+
+    <div class="mb-2">
+      <label for="dtContrato"class="form-label">Data de Contratação</label>
+      <input type="date" class="form-control" id="dtContrato">
+    </div>
+
+    <div class="mb-2">
+      <label for="nascimento"class="form-label">Data de Nascimento</label>
+      <input type="date" class="form-control" id="nascimento">
+    </div>
+
+    <div class="mb-2">
+      <label for="niffunc"class="form-label">NIF</label>
+      <input type="number" class="form-control" id="niffunc">
+    </div>
+
+    <div class="mb-2">
+      <label for="nfornecedor"class="form-label">Fornecedor</label>
+      <input type="text" class="form-control" id="nfornecedor">
+    </div>
+
+    <!-- Buttons -->
+
+    <div class="col-12" style="margin-top: 2%;">
+      <button type="button" class="btn btn-primary" onclick="addFuncionario()">Registar</button>
+    </div>
+  
+</body>
+</html>
