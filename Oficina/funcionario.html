@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registo Funcionário</title>
+
+   <script src="./js/biblo/jquery.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="./js/class/Pessoa.js"></script>
+  <script src="./js/class/Cliente.js"></script>
+  <script src="./js/class/Veiculo.js"></script>
+  <script src="./js/class/Funcionario.js"></script>
+  <script src="./js/js.js"></script>
+  <script src="./js/biblo/bootstrap.js"></script>
+  <script src="./js/biblo/sweetalert.js"></script>
+  <script src="./js/biblo/datatable.js"></script>
+
+  <link rel="stylesheet" href="./css/biblo/bootstrap.css" />
+  <link rel="stylesheet" href="./css/biblo/animate.css" />
+  <link rel="stylesheet" href="./css/biblo/sweetalert.css" />
+  <link rel="stylesheet" href="./css/biblo/datatable.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+     <!-- NAV -->
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+
+    <img src="./img/logo_m_w.png" alt="logo" height="50" />
+    <a class="navbar-brand" href="#"></a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="marcacoes.html">Marcações</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="tabelas.html">Tabelas</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#"role="button" data-bs-toggle="dropdown"aria-expanded="false">Registos</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="cliente.html">Cliente</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="veiculo.html">Veículo</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item nav-link active" href="funcionario.html">Funcionário</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- SEARCH BAR -->
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="motor,pneus,etc..." aria-label="Search"/>
+      <button class="btn btn-outline-success" type="submit">Procurar</button>
+    </form>
+
+  </div>
+</nav>
+
+<!-- Formulário Funcionario -->
+
+<div class="mt-2">
+  <div class="container col-md-6 col-lg-4 mt-5 p-4 shadow rounded bg-light">
+    <h3 class="text-center mb-4" style="color: yellowgreen;">Fomulário Registo Funcionário</h3>
+    <p class="text-muted">Preencha os campos abaixo:</p>
+    
+    <div class="mb-2">
+      <label for="nomeFuncionario"class="form-label">Nome</label>
+      <input type="text" class="form-control" id="nomeFuncionario">
+    </div>
+
+    <div class="mb-2">
+      <label for="moradaFuncionario"class="form-label">Morada</label>
+      <input type="text" class="form-control" id="moradaFuncionario">
+    </div>
+
+    <div class="mb-2">
+      <label for="nifFuncionario"class="form-label">NIF</label>
+      <input type="number" class="form-control" id="nifFuncionario">
+    </div>
+
+    <div class="mb-2">
+      <label for="telefoneFuncionario"class="form-label">Telemóvel</label>
+      <input type="number" class="form-control" id="telefoneFuncionario">
+    </div>
+
+    <div class="mb-2">
+      <label for="nfuncionario"class="form-label">Número de Funcionário</label>
+      <input type="number" class="form-control" id="nfuncionario">
+    </div>
+
+    <div class="mb-2">
+      <label for="tipoFuncionarioSelect"class="form-label">Tipo de Empresa</label>
+      <select class="form-select"  id="tipoFuncionarioSelect">
+        <option value="-1">Escolha uma opção</option>
+        <option value="Administrativo">Administrativo</option>
+        <option value="Mecânico">Mecânico</option>
+        <option value="Chefe Oficina">Chefe Oficina</option>
+      </select>
+    </div>
+
+    <!-- Buttons -->
+
+    <div class="col-12 mt-3" style="margin-top: 2%;">
+      <button type="button" class="btn btn-warning w-100" onclick="addFuncionario()">Registar</button>
+    </div>
+  
+  </div>
+</div>
+  
+</body>
+</html>

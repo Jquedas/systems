@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contactos</title>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/class/pessoa.js"></script>
+    <script src="/js/class/bibliotecario.js"></script>
+    <script src="/js/class/leitor.js"></script>
+    <script src="/js/class/livro.js"></script>
+    <script src="/js/code.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/sweetalert.js"></script>
+    <script src="/js/datatable.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/biblio/bootstrap.css">
+    <link rel="stylesheet" href="css/biblio/sweetalert.css">
+    <link rel="stylesheet" href="css/biblio/animate.css">
+    <link rel="stylesheet" href="css/biblio/datatable.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+      <div class="container-fluid">
+        <img
+          src="/img/logoBooks.png"
+          alt="Logo"
+          width="120"
+          height="30"
+          class="d-inline-block align-text-top me-2"
+        />
+        <a class="navbar-brand" href="img/logoBooks.png"></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="contactos.html">Contactos</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Registo
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="leitor.html">Leitor</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="livro.html">Livros</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="bibliotecario.html">Bibliotecário</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="emprestimo.html">Empréstimo</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="O nome do livro aqui.."
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+
+<div class="container mt-4">
+  <div class="row align-items-start">
+    <!-- CARD -->
+    <div class="col-md-3">
+      <div class="card h-100">
+        <img src="img/side.png" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title text-center">Reserve</h5>
+          <p class="card-text">
+            Escolha o seu livro favorito e faça a sua reserva online.
+          </p>
+          <div class="d-flex justify-content-center">
+            <a class="btn btn-primary">Reserve Já!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMULÁRIO -->
+    <div class="col-md-8" style="margin-top: 4%;">
+      <form class="w-100">
+        <div class="row g-1">
+          <div class="col-md-6"">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome"/>
+          </div>
+
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" placeholder="nomedoleitor@mail.pt" class="form-control" id="email" />
+          </div>
+
+          <div class="col-12">
+            <label for="morada" class="form-label">Morada</label>
+            <input type="text" placeholder="Rua da Biblioteca nº1" class="form-control" id="morada" />
+          </div>
+
+          <div class="col-md-4">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input type="text" class="form-control" id="telefone" />
+          </div>
+
+          <div class="col-md-8">
+            <label for="assunto" class="form-label">Assunto</label>
+            <select id="assuntoSelect" class="form-select">
+              <option value="-1">Escolha uma opção</option>
+            </select>
+          </div>
+
+          <div class="col-12">
+            <label for="areaid" class="form-label">Mensagem</label>
+            <textarea class="form-control" id="areaid" placeholder="A sua mensagem aqui..." rows="11"></textarea>
+            <p>Escreva o motivo do seu contacto</p>
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary mt-2">Enviar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="container  col-12" style="text-align: center; width: 25rem;">
+  <div class="card border-success mb-3" style="max-width: 18rem;">
+  <div class="card-header bg-transparent border-success">A Sua Biblioteca</div>
+  <div class="card-body text-success">
+    <h5 class="card-title">Book4ALL</h5>
+    <img src="img/library.png" class="img-fluid">
+  </div>
+  <div class="card-footer bg-transparent border-success">Ler é como abrir janelas para incontavéis, mundos, onde cada página revela novas paisagens da imaginação.</div>
+</div>
+</div>
+
+
+
+<div class="card mb-3">
+  <img src="img/book4allwhite.png" class="card-img-top" alt="..." style="max-width: 320px; display: block; margin:auto ;">
+  <div class="card-body">
+    <p class="card-text" style="text-align: center;"><small class="text-body-secondary">Avaliação 5414 | 5415 | 5416 - Realizado por: João Quedas | 2025</small></p>
+  </div>
+</div>
+
+
+  </body>
+</html>

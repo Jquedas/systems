@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/class/pessoa.js"></script>
+    <script src="/js/class/bibliotecario.js"></script>
+    <script src="/js/class/leitor.js"></script>
+    <script src="/js/class/livro.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/sweetalert.js"></script>
+    <script src="/js/datatable.js"></script>
+    <script src="/js/code.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/biblio/bootstrap.css" />
+    <link rel="stylesheet" href="css/biblio/sweetalert.css" />
+    <link rel="stylesheet" href="css/biblio/animate.css" />
+    <link rel="stylesheet" href="css/biblio/datatable.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+      <div class="container-fluid">
+        <img src="/img/logoBooks.png" alt="Logo" width="120" height="30" class="d-inline-block align-text-top me-2"/>
+        <a class="navbar-brand" href="img/logoBooks.png"></a>
+        <buttonclass="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expaded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contactos.html">Contactos</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Registo
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="leitor.html">Leitor</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="livro.html">Livro</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="bibliotecario.html"
+                    >Bibliotecário</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="emprestimo.html">Empréstimo</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="O nome do livro aqui.."
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div id="carouselExampleCaptions"class="carousel slide"style="width: 92%; margin: 0 auto">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="img/homepage/1lib.png" class="d-block w-100" alt="..." />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>A sua Biblioteca</h5>
+            <p>Milhares de Livros á sua disposição</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="img/homepage/2lib.png" class="d-block w-100" alt="..." />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>A sua Biblioteca</h5>
+            <p>Milhares de Livros á sua disposição</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="img/homepage/3lib.png" class="d-block w-100" alt="..." />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>A sua Biblioteca</h5>
+            <p>Milhares de Livros á sua disposição</p>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <div class="container">
+      <h3 style="text-align: center">Livros para Todos</h3>
+      <div class="cb-12">
+        <p style="text-align: center">
+          A biblioteca é como um santuário do conhecimento, um reino onde as
+          palavras ganham vida e os pensamentos fluem livremente.Entre suas
+          estantes infinitas, o tempo parece suspender-se, enquanto se navega
+          por mundos imaginários e se mergulha em saberes antigos e
+          contemporâneos.O aroma característico de livros velhos mistura-se ao
+          silêncio reverente dos leitores imersos em suas jornadas
+          literárias.Cada página vira uma nova descoberta, cada prateleira
+          guarda os segredos esperando serem desvendados.Uma biblioteca é mais
+          do que um depósito de livros; é um refúgio para mentes curiosas, um
+          oásis para aqueles sedentos por aprendizado e uma fonte inesgotável de
+          inspiração
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <!-- CARD 1 -->
+        <div class="col-md-3">
+          <div class="card mb-3" style="max-width: 280px">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img
+                  src="img/servicos/books.png"class="img-fluid rounded-start" alt="..."  />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title text-center">Livros</h5>
+                  <p class="card-text text-center">
+                    Milhares de livros à sua disposição.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card mb-3" style="max-width: 280px">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img
+                  src="img/servicos/free.png"
+                  class="img-fluid rounded-start"
+                  alt="..."
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title text-center">Trocas</h5>
+                  <p class="card-text text-center">
+                    Troque um livro por outro.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="col-md-3">
+          <div class="card mb-3" style="max-width: 280px">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img
+                  src="img/servicos/search.png"
+                  class="img-fluid rounded-start"
+                  alt="..."
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title text-center">Pesquisas</h5>
+                  <p class="card-text text-center">
+                    Procure o seu livro favorito.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="col-md-3">
+          <div class="card mb-3" style="max-width: 280px">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img
+                  src="img/servicos/shelving.png"
+                  class="img-fluid rounded-start"
+                  alt="..."
+                />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title text-center">Secções</h5>
+                  <p class="card-text text-center">
+                    Livros para todos os gostos.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-3">
+          <img
+            src="img/book4allwhite.png"
+            class="card-img-top"
+            alt="..."
+            style="max-width: 320px; display: block; margin: auto"
+          />
+          <div class="card-body">
+            <p class="card-text" style="text-align: center">
+              <small class="text-body-secondary"
+                >Avaliação 5414 | 5415 | 5416 - Realizado por: João Quedas |
+                2025</small
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

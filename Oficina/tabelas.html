@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabelas</title>
+
+  <script src="./js/biblo/jquery.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  <script src="./js/class/Pessoa.js"></script>
+  <script src="./js/class/Cliente.js"></script>
+  <script src="./js/class/Funcionario.js"></script>
+  <script src="./js/class/Veiculo.js"></script>
+  <script src="./js/js.js"></script>
+  <script src="./js/biblo/bootstrap.js"></script>
+  <script src="./js/biblo/sweetalert.js"></script>
+  <script src="./js/biblo/datatable.js"></script>
+
+  
+
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/biblo/bootstrap.css" />
+  <link rel="stylesheet" href="./css/biblo/animate.css" />
+  <link rel="stylesheet" href="./css/biblo/sweetalert.css" />
+  <link rel="stylesheet" href="./css/biblo/datatable.css" />
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+     <!-- NAV -->
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+
+    <img src="./img/logo_m_w.png" alt="logo" height="50" />
+    <a class="navbar-brand" href="#"></a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="marcacoes.html">Marcações</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="tabelas.html">Tabelas</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#"role="button" data-bs-toggle="dropdown"aria-expanded="false">Registos</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="cliente.html">Cliente</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="veiculo.html">Veículo</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="funcionario.html">Funcionário</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- SEARCH BAR -->
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" type="search" placeholder="motor,pneus,etc..." aria-label="Search"/>
+      <button class="btn btn-outline-success" type="submit">Procurar</button>
+    </form>
+
+  </div>
+</nav>
+
+<!-- Formulário intervenção -->
+
+<div class="mt-2">
+  <div class="container col-md-6 col-lg-4 mt-5 p-4 shadow rounded bg-light">
+    <h3 class="text-center mb-4" style="color: yellowgreen;">Formulário Intervenção</h3>
+    <p class="text-muted">Preencha os campos abaixo:</p>
+    
+    <div class="mb-2">
+      <label for="refIntervencao"class="form-label">Referência Intervenção</label>
+      <input type="number" class="form-control" id="refIntervencao">
+    </div>
+
+    <div class="mb-2">
+      <label for="horaIntervencao"class="form-label">Hora</label>
+      <input type="time" class="form-control" id="horaIntervencao">
+    </div>
+
+    <div class="mb-2">
+      <label for="dataIntervencao"class="form-label">Data</label>
+      <input type="date" class="form-control" id="dataIntervencao">
+    </div>
+
+    <div class="mb-2">
+      <label for="veiculoSelect"class="form-label">Veículo</label>
+      <select class = "form-select" id="veiculoSelect">
+        <option value="-1">Sem Veículos</option>
+      </select>
+    </div>
+
+    <div class="mb-2">
+      <label for="funcionarioSelect"class="form-label">Funcionário</label>
+      <select class = "form-select" id="funcionarioSelect">
+        <option value="-1">Sem Funcionários</option>
+      </select>
+    </div>
+
+    <div class="mb-2">
+      <label for="tipoIntervencaoSelect"class="form-label">Tipo de Intervenção</label>
+      <select class="form-select"  id="tipoIntervencaoSelect">
+        <option value="-1">Escolha uma opção</option>
+        <option value="Revisão">Revisão</option>
+        <option value="Mudança de Pneus">Mudança de Pneus</option>
+        <option value="Verificação de Travões">Verificação de Travões</option>
+        <option value="Alinhamento de Direção">Alinhamento de Direção</option>
+      </select>
+    </div>
+
+    <!-- Buttons -->
+
+    <div class="col-12 mt-3" style="margin-top: 2%;">
+      <button type="button" class="btn btn-warning w-100" onclick="addIntervencao()">Registar</button>
+    </div>
+  
+  </div>
+</div>
+
+ <!-- Tabela -->
+
+ <div class="container d-flex justify-content-center">
+  <div style="width: 70%;">
+
+    <table class="table  mt-5" id="tableIntervencao">
+    <thead class="table-black">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Referência Intervenção</th>
+        <th scope="col">Data</th>
+        <th scope="col">Hora</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Informação</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <div>
+    <button type="button" class="form-control btn btn-success" onclick="TableInterv()">Mostrar Tabela</button>
+  </div>
+
+  </div>
+ </div>
+
+
+  <!-- Tabela -->
+
+
+<div class="container d-flex justify-content-center">
+  <div style="width: 70%;">
+
+    <!-- TÍTULO -->
+    <h4 class="mt-4 text-center">Tabela de Intervenções</h4>
+
+    <!-- SELECT -->
+    <div class="mb-3">
+      <label for="filtroSelect" class="form-label">Filtrar por tipo:</label>
+      <select class="form-select" id="filtroSelect">
+        <option value="-1">Sem Veiculos</option>
+      </select>
+    </div>
+
+    <!-- TABELA -->
+    <table class="table mt-3" id="tableIntervencao2">
+      <thead class="table-black">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Referência Intervenção</th>
+          <th scope="col">Responsável</th>
+          <th scope="col">Matrícula</th>
+          <th scope="col">Informação</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <!-- BOTÃO -->
+    <div>
+      <button type="button" class="form-control btn btn-success" onclick="TableInfo()">Mostrar Tabela</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODAL DE INFORMAÇÃO DA INTERVENÇÃO -->
+
+<div class="modal fade" id="infoIntervencaoModal" tabindex="-1" aria-labelledby="infoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Informação da Intervenção</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Referência:</strong> <span id="infoRef"></span></p>
+        <p><strong>Agendada por:</strong> <span id="infoFuncionario"></span></p>
+        <p><strong>Matrícula:</strong> <span id="infoMatricula"></span></p>
+        <p><strong>Data/Hora Agendada:</strong> <span id="infoAgendada"></span></p>
+        <p><strong>Data/Hora Final:</strong> <span id="infoFinal"></span></p>
+        <p><strong>Peças Usadas:</strong> <span id="infoPecas"></span></p>
+        <p><strong>Observações:</strong> <span id="infoObs"></span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+ <!-- Modal -->
+
+ <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <h5 class="modal-title" id="infoModalLabel">Informações da Intervenção</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      
+      </div>
+      <div class="modal-body">
+        <p><strong></strong> <span id="modalCliente"></span></p>
+        
+        <p><strong>Funcionário:</strong> <span id="modalFuncionario"></span></p>
+        
+        <p><strong>Equipamento:</strong> <span id="modalEquipamento"></span></p>
+        
+        <p><strong>Data:</strong> <span id="modalData"></span></p>
+        
+        <p><strong>Nº Ordem:</strong> <span id="modalNOrdem"></span></p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+
+<div class="modal fade" id="intervencaoModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Finalizar Intervenção</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Info não editável -->
+        <div class="mb-3"><strong>Cliente:</strong> <span id="intervCliente"></span></div>
+        <div class="mb-3"><strong>Veículo:</strong> <span id="intervVeiculo"></span></div>
+        <div class="mb-3"><strong>Agendamento:</strong> <span id="intervAgendamento"></span></div>
+
+        <hr>
+
+        <!-- Campos de edição -->
+        <div class="mb-3">
+          <label for="funcionarioFinal">Funcionário responsável</label>
+          <select id="funcionarioFinal" class="form-control">
+            <option value="-1">Sem Funcionarios</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="dataFinal">Data de finalização</label>
+          <input type="date" id="dataFinal" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="horaFinal">Hora de finalização</label>
+          <input type="time" id="horaFinal" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label for="obsInterv">Observações</label>
+          <textarea id="obsInterv" class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label>Peças utilizadas</label>
+          <div id="pecasCheckboxes">
+            <!-- Checkboxes via JS -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" onclick="finalizarIntervencao()">Finalizar Intervenção</button>
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+  
+
+  
+</body>
+</html>
