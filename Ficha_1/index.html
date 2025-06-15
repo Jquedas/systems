@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AULA 1 - PHP</title>
+
+  <script src="./src/js/jquery.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="./src/js/bootstrap.js"></script>
+  <script src="./src/js/sweetalert.js"></script>
+  <script src="./src/js/datatable.js"></script>
+
+
+
+  <link rel="stylesheet" href="./src/css/bootstrap.css">
+  <link rel="stylesheet" href="./src/css/sweetalert.css">
+  <link rel="stylesheet" href="./src/css/animate.css">
+  <link rel="stylesheet" href="./src/css/datatable.css">
+
+</head>
+<body>
+
+  <!-- Calculadora  -->
+
+<div class="container">
+  <form class="row g-3">
+
+    <h4 style="text-align: center; color: blue;">Calculadora</h4>
+
+    <div class="col-md-6">
+      <label for="pNumero" class="form-label">Primeiro Número</label>
+      <input type="number" class="form-control" id="pNumero">
+    </div>
+
+    <div class="col-md-6">
+      <label for="sNumero" class="form-label">Segundo Número</label>
+      <input type="number" class="form-control" id="sNumero">
+    </div>
+
+    <div class="col-md-6">
+      <label for="operacao" class="form-label">Operação</label>
+      <select class="form-select" id="opSelect">
+        <option value="-1">Escolha uma opção</option>
+        <option value="1">Soma</option>
+        <option value="2">Divisão</option>
+        <option value="3">Subtração</option>
+        <option value="4">Multiplicação</option>
+        <option value="5">Soma C/Informação</option>
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <label for="resultado" class="form-label">Resultado</label>
+      <input type="number" class="form-control" id="resultado" disabled>
+    </div>
+
+    <div class="col-12">
+      <button type="button" class="btn btn-primary w-100" onclick="calcular()">Calcular</button>
+    </div>
+
+  </form>
+</div>
+
+<!-- Volume  -->
+
+<div class="container" style="margin-top: 3%;">
+  <form class="row g-3">
+
+    <h4 style="text-align: center; color: gray;">Calcular volume de um Triângulo</h4>
+
+     <div class="col-md-6">
+      <label for="areabase" class="form-label">Área da Base</label>
+      <input type="number" class="form-control" id="areabase">
+    </div>
+
+    <div class="col-md-6">
+      <label for="altura" class="form-label">Altura</label>
+      <input type="number" class="form-control" id="altura">
+    </div>
+
+    <div class="col-md-6">
+      <label for="resultadoVolume" class="form-label">Resultado</label>
+      <input type="number" class="form-control" id="resultadoVolume" disabled>
+    </div>
+
+    <div class="col-12">
+      <button type="button" class="btn btn-secondary w-100" onclick="calcularVolume()">Calcular</button>
+    </div>
+
+  </form>
+</div>
+
+<!-- Algoritmo X Y Z  -->
+
+<div class="container" style="margin-top: 3%;">
+  <form class="row g-3">
+
+    <h4 style="text-align: center; color:greenyellow;"> Algoritmo X Y Z</h4>
+
+     <div class="col-md-6">
+      <label for="pnumber" class="form-label">Primeiro Número</label>
+      <input type="number" class="form-control" id="pnumber">
+    </div>
+
+    <div class="col-md-6">
+      <label for="snumber" class="form-label">Segunda Número</label>
+      <input type="number" class="form-control" id="snumber">
+    </div>
+
+    <div class="col-md-6">
+      <label for="tnumber" class="form-label">Terceiro Número</label>
+      <input type="number" class="form-control" id="tnumber">
+    </div>
+
+    <div class="col-md-6">
+      <label for="resultadoConta" class="form-label">Resultado</label>
+      <input type="number" class="form-control" id="resultadoConta" disabled>
+    </div>
+
+    <div class="col-12">
+      <button type="button" class="btn btn-success w-100" onclick="algoritmoLouco()">Calcular</button>
+    </div>
+
+   </form>
+</div>
+
+<!-- CRÉDITO -->
+
+<div class="container" style="margin-top: 3%;">
+  <form class="row g-3">
+
+    <h4 style="text-align: center; color:red;"> Crédito</h4>
+
+    <div class="col-md-6">
+      <label for="qtqt" class="form-label">Quantidade</label>
+      <input type="number" class="form-control" id="qtqt">
+    </div>
+
+    <div class="col-md-6">
+      <label for="valor" class="form-label">Valor</label>
+      <input type="number" class="form-control" id="valor">
+    </div>
+
+    <div class="col-12">
+      <button type="button" class="btn btn-warning" onclick="addSaldo()">Adicionar</button>
+    </div>
+
+    <div class="col-md-6">
+      <label for="saldoCredito" class="form-label">Saldo</label>
+      <input type="number" class="form-control" id="saldoCredito" disabled>
+    </div>
+
+    <div class="col-12">
+      <button type="button" class="btn btn-danger w-100" onclick="credito()">Calcular</button>
+    </div>
+    
+   </form>
+</div>
+
+
+  <script src="./src/js/js.js"></script>
+</body>
+</html>
